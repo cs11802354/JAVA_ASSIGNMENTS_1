@@ -1,0 +1,8 @@
+This is merge sorting : complexity of the program is O(nlogn) , because first this divide the given array into two parts and then
+recursively divide till there is left only one integer both side after dividing hence we know that a single element is already 
+sorted so this dividing takes logn time and the copying to the array to temp array and then back to original array will take order 
+of n time. so overall time complexity will be nlogn time which is quite good for sorting an array.
+
+
+In my code i m calling two functions first is sort() which runs recursively inside this a second function which is merge() is 
+calling which will tale O(n) time to complete which merges two array in sorted manner.
