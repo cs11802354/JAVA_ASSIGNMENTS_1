@@ -1,0 +1,82 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class sorting_1
+{
+    private static double endTime;
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        long testcases = scan.nextLong();
+
+        for(int i=0;i<testcases;i++)             // for no of testcases this loo will run
+        {
+            long arraySize=scan.nextInt();
+            ArrayList<Integer> temp = new ArrayList<>();
+
+            for(int j = 0; j < arraySize; j++)           // for no of arraysize this loop will run
+            {
+
+                int randomNum =(int)(Math.random()*100);       // randomly assigned the number to each index of that corresponding arraylist
+                temp.add(randomNum);
+            }
+            double startTime=System.nanoTime();
+            permute(0, temp);
+            double end =endTime;
+            System.out.println("N = "+arraySize+"\t\t"+"Time Taken = "+(end-startTime)/1000000000.0);
+
+
+        }
+
+    }
+    static ArrayList<Integer> y = new ArrayList<>();
+
+    public static boolean CHECK(ArrayList temp)           // checking the each permuted arraylist if it is sorted or
+    {                                                     // not if this find the give list is sorted then it return true
+        for (int i = 0; i < temp.size()-1; i++) {         // otherwise return false
+            if ((int)temp.get(i) > (int)temp.get(i+1))
+            {
+                return false;
+            }
+        }
+        y=temp;
+        return true;
+    }
+
+    public  static void permute(int start, ArrayList<Integer> input ) {
+        if (start == input.size()) {
+            //System.out.println(input);
+
+            ArrayList<Integer> man=new ArrayList<>();
+            for(int x: input){
+                man.add(x);
+                //System.out.print(x+" ");
+            }
+            if(CHECK(man))
+            {
+                endTime =System.nanoTime();     //if the CHECK function return true this means we have found the result
+                return;                         // hence noting the endtime and breaking the entire function
+            }
+            //System.out.println("");
+            return;
+        }
+        int x=start;
+
+        for (int i =x ; i < input.size(); i++) {
+            // swapping
+            int temp = input.get(i);
+            input.set(i,input.get(start));
+            input.set(start,temp);
+
+            permute(start+1, input);      // recursive call for generating each pattern of a particular given array
+
+            int temp2 = input.get(i);
+            input.set(i,input.get(start));
+            input.set(start,temp2);
+
+        }
+
+
+    }
+}
