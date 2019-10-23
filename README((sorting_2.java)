@@ -1,3 +1,5 @@
+# sorting_2.java (MERGE SORT)
+
 This is merge sorting : complexity of the program is O(nlogn) , because first this divide the given array into two parts and then
 recursively divide till there is left only one integer both side after dividing hence we know that a single element is already 
 sorted so this dividing takes logn time and the copying to the array to temp array and then back to original array will take order 
